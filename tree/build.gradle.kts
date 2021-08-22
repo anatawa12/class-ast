@@ -1,3 +1,5 @@
+import org.jetbrains.dokka.gradle.AbstractDokkaLeafTask
+import org.jetbrains.dokka.gradle.AbstractDokkaTask
 import org.jetbrains.dokka.gradle.DokkaTask
 
 plugins {
@@ -29,16 +31,15 @@ java {
     withJavadocJar()
 }
 
-tasks.withType(DokkaTask::class).all {
+tasks.withType(AbstractDokkaLeafTask::class).all {
     moduleName.set("class-ast tree")
     dependencies {
         plugins(project(":dokka-plugin"))
-    }
-    dokkaSourceSets {
-        configureEach {
-            includes.from("kdoc.md")
+        if (name.startsWith("dokkaJavadoc")) {
+            plugins("org.jetbrains.dokka:kotlin-as-java-plugin:1.5.0")
         }
     }
+    dokkaSourceSets["main"].includes.from("kdoc.md")
 }
 
 val dokkaJavadoc: DokkaTask by tasks
