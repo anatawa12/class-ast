@@ -49,6 +49,51 @@ abstract class AttributeType(
     }
 
     /**
+     * Instantiate AttributeType.
+     *
+     * @param implementationKClass The Class instance indicates implementation class of this Attribute.
+     * @param name The name of attribute in class file.
+     * @param sinceVersion The minimal class file version this attribute can be appeared.
+     * @param targets The set of location of this attribute. Empty if it's allowed to place on anywhere.
+     */
+    constructor(
+        implementationKClass: Class<out Attribute>,
+        name: String,
+        sinceVersion: ClassFileVersion,
+        targets: Collection<AttributeTarget>
+    ) : this(implementationKClass.kotlin, name, sinceVersion, targets)
+
+    /**
+     * Instantiate AttributeType.
+     *
+     * @param implementationKClass The KClass instance indicates implementation class of this Attribute.
+     * @param name The name of attribute in class file.
+     * @param sinceVersion The minimal class file version this attribute can be appeared.
+     * @param targets The set of location of this attribute. Empty if it's allowed to place on anywhere.
+     */
+    constructor(
+        implementationKClass: KClass<out Attribute>,
+        name: String,
+        sinceVersion: ClassFileVersion,
+        vararg targets: AttributeTarget,
+    ) : this(implementationKClass, name, sinceVersion, targets.asList())
+
+    /**
+     * Instantiate AttributeType.
+     *
+     * @param implementationKClass The Class instance indicates implementation class of this Attribute.
+     * @param name The name of attribute in class file.
+     * @param sinceVersion The minimal class file version this attribute can be appeared.
+     * @param targets The set of location of this attribute. Empty if it's allowed to place on anywhere.
+     */
+    constructor(
+        implementationKClass: Class<out Attribute>,
+        name: String,
+        sinceVersion: ClassFileVersion,
+        vararg targets: AttributeTarget,
+    ) : this(implementationKClass, name, sinceVersion, targets.asList())
+
+    /**
      * Returns the simple text explains name, minimal class file version and location of this attribute
      * @return The simple text explains name, minimal class file version and location of this attribute
      */
