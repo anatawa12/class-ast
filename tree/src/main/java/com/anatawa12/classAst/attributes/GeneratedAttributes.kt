@@ -176,22 +176,7 @@ class SourceFileAttribute(
     )
 }
 
-/**
- * The SourceDebugExtension Attribute.
- * @spec 4.7.11
- */
-@AutoToString("debugData")
-class SourceDebugExtensionAttribute(
-    name: ConstantUtf8,
-    var debugData: ByteArray,
-) : Attribute(name, Type) {
-    companion object Type : AttributeType(
-        SourceDebugExtensionAttribute::class, 
-        "SourceDebugExtension", 
-        CV49_0, 
-        ClassFile,
-    )
-}
+// SourceDebugExtension is in other file
 
 /**
  * The LineNumberTable Attribute.

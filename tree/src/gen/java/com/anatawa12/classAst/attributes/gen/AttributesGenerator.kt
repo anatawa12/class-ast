@@ -91,13 +91,8 @@ fun AttributesGenerator.configure() {
 
         "sourceFile"(cUtf8)
     }
-    "SourceDebugExtension" {
-        section = "4.7.11"
-        minimal = "49.0"
-        targets(ClassFile)
-
-        "debugData"(u4ByteArray)
-    }
+    code.appendLine("// SourceDebugExtension is in other file")
+    code.appendLine()
     "LineNumberTable" {
         section = "4.7.12"
         minimal = "45.3"
