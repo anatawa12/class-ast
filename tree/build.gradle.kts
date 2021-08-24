@@ -13,15 +13,20 @@ repositories {
     mavenCentral()
 }
 
+val gen by sourceSets.creating
+
 dependencies {
     implementation(kotlin("stdlib"))
+    "genImplementation"(kotlin("stdlib"))
     
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 }
 
 autoVisitor.addLib("")
+autoVisitor.addLib("gen")
 autoToString.addLib()
+autoToString.addLib("gen")
 
 tasks.test {
     useJUnitPlatform()
@@ -29,6 +34,12 @@ tasks.test {
 
 java {
     withJavadocJar()
+}
+
+val generate by tasks.creating(JavaExec::class) {
+    classpath(gen.runtimeClasspath)
+    mainClass.set("com.anatawa12.classAst.gen.Main")
+    args(file("src/main/java"))
 }
 
 tasks.withType(AbstractDokkaLeafTask::class).all {
