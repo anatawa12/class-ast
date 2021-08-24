@@ -8,5 +8,5 @@ import com.anatawa12.classAst.ConstantUtf8
  * @spec 4.7.1
  */
 @Suppress("DEPRECATION")
-class GeneralAttribute(name: ConstantUtf8, var value: ByteArray) : Attribute(name, 0) {
+class UnknwonAttribute(name: ConstantUtf8, var value: ByteArray) : Attribute(name, 0) {
 }

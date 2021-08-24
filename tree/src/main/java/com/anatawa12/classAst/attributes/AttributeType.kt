@@ -44,7 +44,7 @@ abstract class AttributeType(
     val targets: Set<AttributeTarget>
 
     init {
-        check(implementationKClass !in setOf(Attribute::class, GeneralAttribute::class))
+        check(implementationKClass !in setOf(Attribute::class, UnknwonAttribute::class))
         this.targets = targets.toSet()
     }
 

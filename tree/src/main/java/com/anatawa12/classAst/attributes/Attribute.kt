@@ -20,12 +20,12 @@ abstract class Attribute {
     }
 
     /**
-     * The constructor only for GeneralAttribute, you can't use this
+     * The constructor only for UnknwonAttribute, you can't use this
      */
     @Suppress("UNUSED_PARAMETER")
-    @Deprecated("only for GeneralAttribute")
+    @Deprecated("only for UnknwonAttribute")
     internal constructor(name: ConstantUtf8, placeHolder: Int) {
-        require(this::class == GeneralAttribute::class)
+        require(this::class == UnknwonAttribute::class)
         this.name = name
         this.type = null
     }
