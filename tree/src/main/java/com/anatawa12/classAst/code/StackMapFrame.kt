@@ -3,8 +3,7 @@ package com.anatawa12.classAst.code
 import com.anatawa12.autoToString.AutoToString
 import com.anatawa12.classAst.ConstantClass
 
-// can be added so not a sealed class.
-abstract class StackMapFrame(val target: Instruction)
+sealed class StackMapFrame(val target: Instruction)
 // same_frame, 0-63
 @AutoToString("target")
 class SameFrame(target: Instruction) : StackMapFrame(target)
@@ -40,8 +39,7 @@ class FullFrame(
 ) : StackMapFrame(target) {
 }
 
-// can be added so not a sealed class.
-abstract class VerificationTypeInfo private constructor(
+sealed class VerificationTypeInfo private constructor(
     val tag: UByte,
 ) {
     @AutoToString()
