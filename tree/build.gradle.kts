@@ -36,6 +36,10 @@ java {
     withJavadocJar()
 }
 
+tasks.compileKotlin {
+    kotlinOptions.freeCompilerArgs += "-Xopt-in=kotlin.RequiresOptIn"
+}
+
 val generate by tasks.creating(JavaExec::class) {
     classpath(gen.runtimeClasspath)
     mainClass.set("com.anatawa12.classAst.gen.Main")
